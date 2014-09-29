@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ess.tudarmstadt.de.sleepsense"
+    android:versionCode="7"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ess.tudarmstadt.de.sleepsense.main.MainFragment"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.ess.tudarmstadt.de.sleepsense.main.SleepDetectorPreference" >
+        </activity>
+        <activity
+            android:name="com.ess.tudarmstadt.de.sleepsense.mgraph.GraphPlotBigActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.ess.tudarmstadt.de.sleepsense.mgraph.SleepEstimGPlotBigActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" >
+        </activity>
+
+        <service
+            android:name="com.ess.tudarmstadt.de.sleepsense.systemmonitor.SensorsMeterService"
+            android:exported="true"
+            android:process=":remote" >
+        </service>
+        
+        <receiver
+            android:name="com.ess.tudarmstadt.de.sleepsense.utils.BootReceiver"
+            android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.ess.tudarmstadt.de.sleepsense.utils.WakeupAlarm"
+            android:exported="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.ess.tudarmstadt.de.sleepsense.systemmonitor.WakeupAlarm.ALARM" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.ess.tudarmstadt.de.sleepsense.utils.WakeupAlarmOff"
+            android:exported="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.ess.tudarmstadt.de.sleepsense.systemmonitor.WakeupAlarmOff.ALARM" >
+                </action>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

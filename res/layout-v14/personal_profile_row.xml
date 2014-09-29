@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/per_row_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"
+        android:paddingLeft="10dip"
+        android:text="Fri 20/06" />
+
+    <TextView
+        android:id="@+id/per_row_wake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="09:45" />
+
+    <TextView
+        android:id="@+id/per_row_sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toLeftOf="@+id/per_row_wake"
+        android:text="01:00" />
+
+    <TextView
+        android:id="@+id/per_row_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@+id/per_row_wake"
+        android:text="8:5" />
+
+    <TextView
+        android:id="@+id/per_row_pby"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/per_row_hours"
+        android:layout_margin="10dp"
+        android:paddingLeft="10dp"
+        android:text="100%" />
+
+</RelativeLayout>

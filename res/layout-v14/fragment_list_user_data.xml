@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/head_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/per_row_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"
+            android:paddingLeft="10dip"
+            android:paddingRight="1dip"
+            android:text="Date"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/per_row_wake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Wake"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/per_row_sleep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/per_row_wake"
+            android:text="Sleep"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/per_row_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/per_row_wake"
+            android:text="Hours"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/per_row_pby"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/per_row_hours"
+        	android:paddingStart="10dp"
+        	android:paddingEnd="0dp"
+            android:text="Prbly"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/hor_line"
+        android:layout_width="match_parent"
+        android:layout_height="2sp"
+        android:layout_below="@+id/head_title"
+        android:background="@android:color/background_dark" />
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_add_item"
+        android:layout_below="@+id/hor_line"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@android:id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The List is empty" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Add Entry" />
+
+    <Button
+        android:id="@+id/btn_cam_cap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/btn_add_item"
+        android:text="Scan QR-code"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hieuha.graphviewtest.MainActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_export"
+        android:orderInCategory="100"
+        android:title="Export"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_once_recalc"
+        android:orderInCategory="100"
+        android:title="DB Recalculate"
+        app:showAsAction="never"/>
+
+</menu>

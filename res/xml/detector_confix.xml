@@ -1,0 +1,33 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:summary="Select detector modules to indicate sleep activity"
+        android:title="Detector Selection" >
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="settings_time_frame"
+            android:summary="between 8pm and 11am"
+            android:title="Set time frame" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="settings_waiting_period"
+            android:summary="User is not using phone in the last 45mins"
+            android:title="Waiting period" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="settings_acc_sensor"
+            android:summary="if no hight movement detected on phone"
+            android:title="Moving Detection" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="settings_ambient_light_sensor"
+            android:summary="If no ambient light sensing"
+            android:title="Light Detection" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="settings_noise_sensor"
+            android:summary="If decreased in noise sensing"
+            android:title="Noise Detection" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
