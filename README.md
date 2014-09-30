@@ -2,7 +2,11 @@ SleepSense
 ===========================
 
 AddOn Android App of the myHealthHub
-Build and Run the same as myHealthHub
+
+Follow this guide to setup support library before building the app:
+https://developer.android.com/tools/support-library/setup.html
+
+After that you can build and run the same as myHealthHub
 
 
 License
