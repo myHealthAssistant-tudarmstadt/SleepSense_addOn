@@ -265,11 +265,11 @@ public class SleepEstimGPlotFragment extends Fragment {
 							.floor(sleepDiary.get(i).getxValue() * 10.0) / 10.0;
 					aWake = Math.floor(sleepDiary.get(i).getyValue() * 10.0) / 10.0;
 					
-//					if (aSleep < 20.0 && i < sleepDiary.size() - 2){ FIXME
-//						aSleep = Math
-//								.floor(sleepDiary.get(i+1).getxValue() * 10.0) / 10.0;
-//						aWake = Math.floor(sleepDiary.get(i+1).getyValue() * 10.0) / 10.0;
-//					}
+					if (aSleep < 20.0 && i < sleepDiary.size() - 2){ //FIXME
+						aSleep = Math
+								.floor(sleepDiary.get(i+1).getxValue() * 10.0) / 10.0;
+						aWake = Math.floor(sleepDiary.get(i+1).getyValue() * 10.0) / 10.0;
+					}
 					
 				}
 			}

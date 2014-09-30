@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Users\\HieuHa\\Workspaces\\MyEclipseTradeTools\\SleepSense\\src\\com\\ess\\tudarmstadt\\de\\sleepsense\\IRemoteService.aidl
+ * Original file: C:\\Users\\HieuHa\\AndroidOpenSource\\SleepSense_addOn\\src\\com\\ess\\tudarmstadt\\de\\sleepsense\\IRemoteService.aidl
  */
 package com.ess.tudarmstadt.de.sleepsense;
 public interface IRemoteService extends android.os.IInterface
