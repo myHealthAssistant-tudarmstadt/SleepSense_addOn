@@ -19,6 +19,7 @@
 package com.ess.tudarmstadt.de.sleepsense.mgraph;
 
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -216,7 +217,7 @@ public class SleepEstimGPlotFragment extends Fragment {
 			x = nextTenMinOf(x);
 		}
 
-		Log.e(TAG, sleepPrbly.toString());
+//		Log.e(TAG, sleepPrbly.toString());
 	}
 
 	private void clearAllCharts() {
@@ -260,17 +261,26 @@ public class SleepEstimGPlotFragment extends Fragment {
 		if (!sleepDiary.isEmpty()) {
 			for (int i = 0; i < sleepDiary.size(); i++) {
 				String aDate = sleepDiary.get(i).getTrafficDate();
+				
 				if (aDate.equals(newDate)){
 					aSleep = Math
 							.floor(sleepDiary.get(i).getxValue() * 10.0) / 10.0;
-					aWake = Math.floor(sleepDiary.get(i).getyValue() * 10.0) / 10.0;
+					aWake = Math.floor(sleepDiary.get(i).getyValue() * 10.0) / 10.0;					
+				}
+			}
+			String nextDate = getNextDay(newDate);
+			for (int j = 0; j < sleepDiary.size(); j++){
+				String nextTimeOnDb = sleepDiary.get(j).getTrafficDate();
+				if (nextDate.equals(nextTimeOnDb)){
+					double nSleep = Math
+							.floor(sleepDiary.get(j).getxValue() * 10.0) / 10.0;
+					double nWake = Math.floor(sleepDiary.get(j).getyValue() * 10.0) / 10.0;
 					
-					if (aSleep < 20.0 && i < sleepDiary.size() - 2){ //FIXME
-						aSleep = Math
-								.floor(sleepDiary.get(i+1).getxValue() * 10.0) / 10.0;
-						aWake = Math.floor(sleepDiary.get(i+1).getyValue() * 10.0) / 10.0;
+					if (nSleep < 20.0){
+						aSleep = nSleep;
+						aWake = nWake;
+						break;
 					}
-					
 				}
 			}
 		}
@@ -278,6 +288,25 @@ public class SleepEstimGPlotFragment extends Fragment {
 		sleepTruth.setText(new DecimalFormat("00.00").format(aSleep).replaceAll(
 							"\\,", ":") + " - " + new DecimalFormat("00.00").format(aWake).replaceAll(
 							"\\,", ":"));
+	}
+	
+	/** get the next day after the date */
+	private String getNextDay(String date){
+		Log.e(TAG, "Date:" + date);
+		String nextDay = "";
+
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			Date now = sdfDate.parse(date);
+			c.setTime(now);
+			c.add(Calendar.DATE, 1);
+			nextDay = sdfDate.format(c.getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Log.e(TAG, "nextDay=" + nextDay);
+		return nextDay;
 	}
 
 	private ArrayList<GraphView.GraphViewData> updateTrafficOnDate(String date,
@@ -334,7 +363,7 @@ public class SleepEstimGPlotFragment extends Fragment {
 
 			GraphViewData x = new GraphViewData(x_axis, addP);
 			data.add(x);
-			Log.e(TAG, "y-Val=" + t.getyValue() + " --> " + addP);
+//			Log.e(TAG, "y-Val=" + t.getyValue() + " --> " + addP);
 		}
 
 		return data;
@@ -438,17 +467,11 @@ public class SleepEstimGPlotFragment extends Fragment {
 
 					// convert (double) hour.mm to hour:mm
 					// make sure not have smth like 4:60 or 11:83 in the time frame!
-					double whole = value; // FIXME
+					double whole = value;
 					double fractionalPart = value % 1;
 					double integralPart = value - fractionalPart;
 					if (fractionalPart >= 0.60) {
 						whole = integralPart + 1.0d + (fractionalPart - 0.60);
-					}
-					if (whole % 1 > 0.60){
-						String str = "This's weird!: axisVal=" + axis_value + "\n whole=" + whole
-								+ "\n value=" + value + "\n fractional=" + fractionalPart + "\n";
-						UtilsTools.logDebug(TAG, str);
-						
 					}
 
 					return new DecimalFormat("00.00").format(whole).replaceAll(
@@ -498,7 +521,7 @@ public class SleepEstimGPlotFragment extends Fragment {
 	 * 
 	 * @param i
 	 *            0, 1 or -1
-	 * @return current, next or prev date
+	 * @return current, next or prev date on database
 	 */
 	private String getDate(int i, String currentDate) {
 		ArrayList<String> avalDate = new ArrayList<String>();
